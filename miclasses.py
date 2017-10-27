@@ -61,7 +61,10 @@ class Stress():
         return (I1,I2,I3)
     
     def principal(self):
-        '''returns a tuple of Principal stresses - min, mid, max
-        S^3 - I1.S^2 + I2.S - I3 = 0'''
+        '''
+        returns a tuple of Principal stresses - min, mid, max
+        S^3 - I1.S^2 + I2.S - I3 = 0
+        uses the numpy method roots to determine the roots of a polynomial
+        '''
         prinStress = sorted(np.roots([1] + list(self.invariant())), reverse = True)
         return Stress(prinStress[0], prinStress[1], prinStress[2])
