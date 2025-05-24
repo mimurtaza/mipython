@@ -40,3 +40,20 @@ class Cylinder:
         h = self.height
         m = self.mass
         return f"Cylinder({self.section}, H={h:.3f} m, Mass={m:.3f} kg)"
+
+if __name__ == "__main__":
+    solid_circle = Circle(outer_radius=0.05)
+    hollow_circle = Circle(outer_radius=0.05, inner_radius=0.03)
+
+    solid_cylinder = Cylinder(cross_section=solid_circle, height=0.2, density=7850)
+    hollow_cylinder = Cylinder(cross_section=hollow_circle, height=0.2, density=7850)
+
+    print(solid_cylinder)
+    print(f"  Area: {solid_circle.area():.6f} m²")
+    print(f"  Polar Moment: {solid_circle.polar_moment():.6e} m⁴")
+    print(f"  Inertia Z: {solid_cylinder.moment_of_inertia('z'):.6f} kg·m²")
+
+    print(hollow_cylinder)
+    print(f"  Area: {hollow_circle.area():.6f} m²")
+    print(f"  Polar Moment: {hollow_circle.polar_moment():.6e} m⁴")
+    print(f"  Inertia Z: {hollow_cylinder.moment_of_inertia('z'):.6f} kg·m²")
